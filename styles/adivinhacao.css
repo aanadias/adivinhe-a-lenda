@@ -1,0 +1,295 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0f1115;
+    color: #e1e3e6;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, #1b3a29 0%, #0a0d0b 80%);
+    opacity: 0.85;
+    animation: fundoAnimado 14s ease-in-out infinite alternate;
+    z-index: -2;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+}
+
+@keyframes fundoAnimado {
+    from {
+        transform: scale(1);
+        filter: brightness(0.9);
+    }
+    to {
+        transform: scale(1.05);
+        filter: brightness(1.1);
+    }
+}
+
+.topo {
+    width: 100%;
+    max-width: 600px;
+    margin: 30px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 0 15px;
+}
+
+.barra-tentativas {
+    width: 100%;
+    height: 26px;
+    background: #1e222a;
+    border: 1px solid #2d323e;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.barra-progresso {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #d32f2f, #f44336);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: width 0.4s ease-in-out;
+}
+
+.campo-resposta {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+
+.campo-input {
+    position: relative;
+    flex: 1;
+}
+
+.campo-resposta input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 8px;
+    border: 1px solid #333a48;
+    background: #161920;
+    color: #ffffff;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.campo-resposta input:focus {
+    border-color: #2ecc71;
+    box-shadow: 0 0 8px rgba(46, 204, 113, 0.3);
+}
+
+.campo-resposta button {
+    padding: 0 24px;
+    border: none;
+    border-radius: 8px;
+    background: #2ecc71;
+    color: #0f1115;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.campo-resposta button:hover {
+    background: #27ae60;
+}
+
+.campo-resposta button:active {
+    transform: scale(0.97);
+}
+
+#sugestoes {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    width: 100%;
+    background: #161920;
+    border: 1px solid #333a48;
+    border-radius: 8px;
+    max-height: 180px;
+    overflow-y: auto;
+    z-index: 100;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+#sugestoes div {
+    padding: 12px 16px;
+    color: #d1d5db;
+    cursor: pointer;
+    border-bottom: 1px solid #222733;
+    transition: background 0.2s ease;
+}
+
+#sugestoes div:last-child {
+    border-bottom: none;
+}
+
+#sugestoes div:hover {
+    background: #252a36;
+    color: #2ecc71;
+}
+
+.jogo {
+    width: 100%;
+    max-width: 600px;
+    margin: 30px auto 60px auto;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.dicas {
+    background: rgba(22, 25, 32, 0.7);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 16px 20px;
+    text-align: center;
+}
+
+.dicas p {
+    color: #a0a7b5;
+    font-size: 0.95rem;
+}
+
+.dicas #dica {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* CARDS E IMAGENS DO PERSONAGEM */
+.cartao-personagem {
+    background: #161920;
+    border: 1px solid #2a2f3d;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    animation: aparecer 0.3s ease-out forwards;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cartao-conteudo {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.imagem-personagem {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #2a2f3d;
+    background-color: #0f1115;
+}
+
+.info-personagem {
+    flex: 1;
+}
+
+.cartao-personagem h2 {
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #222733;
+    padding-bottom: 6px;
+}
+
+.secao-atributo {
+    margin-bottom: 10px;
+}
+
+.titulo-attr {
+    display: block;
+    font-size: 0.75rem;
+    color: #788294;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.tag {
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tag.erro {
+    background-color: rgba(211, 47, 47, 0.2);
+    border: 1px solid #d32f2f;
+    color: #ff6b6b;
+}
+
+.tag.acerto {
+    background-color: rgba(46, 204, 113, 0.2);
+    border: 1px solid #2ecc71;
+    color: #2ecc71;
+}
+
+#novoJogo {
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    background: transparent;
+    border: 1px solid #2ecc71;
+    color: #2ecc71;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#novoJogo:hover {
+    background: #2ecc71;
+    color: #0f1115;
+}

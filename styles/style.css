@@ -1,0 +1,171 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image: url("img/folclore.png"); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    opacity: 0.90; /* Opacidade da imagem */
+
+    animation: fundoAnimado 12s ease-in-out infinite alternate;
+
+    z-index: -2;
+}
+
+/* Camada escura sobre a imagem */
+
+body::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(0,0,0,0.4),
+        rgba(0,0,0,0.7)
+    );
+    z-index: -1;
+}
+
+/* Pequena animação */
+
+@keyframes fundoAnimado {
+    from {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+
+    to {
+        transform: scale(1.08);
+        filter: brightness(1.1);
+    }
+}
+
+/* ===========================
+        CONTAINER
+=========================== */
+
+.container {
+    width: 90%;
+    max-width: 700px;
+    padding: 50px;
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    text-align: center;
+
+    animation: aparecer 1s ease;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===========================
+        TEXTOS
+=========================== */
+
+.container__texto h1 {
+    color: white;
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.container__texto-verde {
+    color: #2ecc71;
+}
+
+.texto__paragrafo {
+    color: #dddddd;
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+/* ===========================
+        BOTÃO
+=========================== */
+
+.container__botao {
+    background: #2ecc71;
+    color: white;
+
+    border: none;
+    border-radius: 10px;
+
+    padding: 16px 35px;
+
+    font-size: 1rem;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+}
+
+.container__botao:hover {
+    background: #27ae60;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(46,204,113,.3);
+}
+
+.container__botao:active {
+    transform: scale(0.96);
+}
+
+/* ===========================
+      RESPONSIVIDADE
+=========================== */
+
+@media (max-width: 768px) {
+
+    .container {
+        padding: 35px;
+    }
+
+    .container__texto h1 {
+        font-size: 2.2rem;
+    }
+
+    .texto__paragrafo {
+        font-size: 1rem;
+    }
+
+}

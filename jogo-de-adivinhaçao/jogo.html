@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/adivinhacao.css">
+    <title>Adivinhe a Lenda</title>
+</head>
+<body>
+
+    <header class="topo">
+        <div class="barra-tentativas">
+            <div class="barra-progresso">
+                <span>10/10</span>
+            </div>
+        </div>
+
+        <div class="campo-resposta">
+            <div class="campo-input">
+                <input
+                    type="text"
+                    placeholder="Digite o personagem aqui"
+                    id="resposta"
+                    autocomplete="off">
+                <div id="sugestoes"></div>
+            </div>
+
+            <button class="btnEnviar" id="btnEnviar">
+                Enviar
+            </button>
+        </div>
+    </header>
+
+    <main class="jogo">
+        <section class="dicas">
+            <p>
+                Dica:
+                <span id="dica">
+                    Comece com um personagem
+                </span>
+            </p>
+        </section>
+
+        <section id="mensagens">
+
+        </section>
+    </main>
+
+    <script src="./adivinhação.js"></script>
+</body>
+</html>
