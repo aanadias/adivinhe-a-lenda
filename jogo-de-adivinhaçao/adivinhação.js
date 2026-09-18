@@ -375,7 +375,7 @@ function novoJogo() {
     escolherPersonagem();
 }
 
-/*DICAS / SUGESTÕES*/
+/*DICAS*/
 function mostrarSugestões() {
     const texto = campoResposta.value.toLowerCase();
     sugestoes.innerHTML = "";
